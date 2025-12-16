@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://script/player.gd" type="Script" id=1]
+[ext_resource path="res://othar/New Piskel (2).png" type="Texture" id=2]
+[ext_resource path="res://suond/jump.wav" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 3.5, 3.5 )
+
+[node name="player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 2.0 ]
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 3.07637e-08, 1.78814e-07 )
+scale = Vector2( 0.484375, 0.53125 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -0.5 )
+shape = SubResource( 2 )
+
+[node name="jumpsound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="deathtimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="deathparticales" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 50
+lifetime = 0.1
+one_shot = true
+explosiveness = 1.0
+fixed_fps = 30
+gravity = Vector2( 1.36424e-12, 300 )
+initial_velocity = 300.0
+initial_velocity_random = 1.0
+scale_amount = 0.3
+scale_amount_random = 0.3
+color = Color( 0, 0.498039, 1, 1 )
+
+[connection signal="timeout" from="deathtimer" to="." method="_on_deathtimer_timeout"]
