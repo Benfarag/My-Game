@@ -23,4 +23,4 @@
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/shadow-jump.git
+git clone https://kitmora-studio.itch.io/shadow-jump
